@@ -25,8 +25,12 @@ import { AppService } from './app.service';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      logger: 'advanced-console',
-      logging: true,
+      ssl: true, // Enable SSL if required by your database service
+      extra: {
+        ssl: {
+          rejectUnauthorized: false, // Add if the server requires it
+        },
+      },
       synchronize: true, // Set to false in production
     }),
     StatesModule,
