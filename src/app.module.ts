@@ -12,6 +12,7 @@ import { UsersModule } from './users/users.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+const isProduction = process.env.NODE_ENV === 'production';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,13 +26,10 @@ import { AppService } from './app.service';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      ssl: true, // Enable SSL if required by your database service
-      extra: {
-        ssl: {
-          rejectUnauthorized: false, // Add if the server requires it
-        },
-      },
+      ssl: isProduction ? { rejectUnauthorized: false } : false, // Enable SSL if required by your database service
       synchronize: true, // Set to false in production
+      retryAttempts: 10, // Retry connection on failure
+      retryDelay: 3000,
     }),
     StatesModule,
     CitiesModule,
