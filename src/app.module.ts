@@ -26,7 +26,7 @@ const isProduction = process.env.NODE_ENV === 'production';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      ssl: isProduction ? { rejectUnauthorized: false } : false, // Enable SSL if required by your database service
+      ssl: isProduction ? { rejectUnauthorized: false } : true, // Enable SSL if required by your database service
       synchronize: true, // Set to false in production
       retryAttempts: 10, // Retry connection on failure
       retryDelay: 3000,
