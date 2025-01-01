@@ -6,7 +6,7 @@ import { UpdateCollegeDto } from './dto/update-college.dto';
 import { College } from './entities/college.entity';
 
 @Controller('colleges')
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 export class CollegesController {
   constructor(private readonly collegesService: CollegesService) {}
 

@@ -35,7 +35,7 @@ export class CoursesService {
   }
 
   findAll(): Promise<Course[]> {
-    return this.courseRepository.find({ relations: ['college'] });
+    return this.courseRepository.find();
   }
 
   findOne(id: number): Promise<Course> {

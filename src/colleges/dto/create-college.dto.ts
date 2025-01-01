@@ -1,16 +1,19 @@
-import { IsInt, IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateCollegeDto {
   @IsString()
   @IsNotEmpty()
   name: string;
 
-  @IsInt()
+  @IsNumber()
+  @IsNotEmpty()
   score: number;
 
-  @IsInt()
+  @IsNumber()
+  @IsNotEmpty()
   cityId: number;
 
-  @IsInt()
+  @IsNumber()
+  @IsNotEmpty()
   stateId: number;
 }

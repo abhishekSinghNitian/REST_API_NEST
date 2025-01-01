@@ -10,8 +10,10 @@ export class CreateCourseDto {
   courseDuration: string;
 
   @IsNumber()
+  @IsNotEmpty()
   courseFee: number;
 
   @IsInt()
+  @IsNotEmpty()
   collegeId: number;
 }
